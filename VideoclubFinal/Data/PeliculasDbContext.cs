@@ -2,11 +2,11 @@
 
 
 using Microsoft.EntityFrameworkCore;
-using Videoclub.Shared.Models;
+
 using VideoclubFinal.Models;
 
 
-namespace Videoclub.Shared.Data;
+namespace VideoclubFinal.data;
 
 public class PeliculasDbContext : DbContext
 {

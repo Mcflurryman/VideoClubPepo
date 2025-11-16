@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows</TargetFramework>
-    <RootNamespace>Videoclub_Frontend</RootNamespace>
+    <RootNamespace>Videoclub.Frontend</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VideoClub.Shared\VideoClub.Shared.csproj" />
+    <ProjectReference Include="..\VideoclubFinal\VideoclubFinal.csproj" />
   </ItemGroup>
 
 </Project>

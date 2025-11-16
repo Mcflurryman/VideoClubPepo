@@ -7,26 +7,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Videoclub.Shared.Data;
-using VideoclubFrontend.Services;
+using Videoclub.Frontend.Services;
+using Videoclub.Frontend.Models;
+using Videoclub.Frontend.Views;
 
 namespace Videoclub_Frontend.Views
 {
     public partial class Form2 : Form
     {
-        private readonly PeliculasDbContext _context;
-        private readonly PeliculasServices _services;
+        private readonly PeliculasMVC _api = new PeliculasMVC();
+
         public Form2()
         {
             InitializeComponent();
-            _context = new PeliculasDbContext();
-            _services = new PeliculasServices(_context);
+
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private async void Form2_Load(object sender, EventArgs e)
         {
+            {
+                var peliculas = await _api.GetPeliculas();
+                dgvPeliculas.DataSource = peliculas;
+                dgvPeliculas.RowHeadersVisible = false;
+                dgvPeliculas.Columns["Id"].Visible = false;
+                dgvPeliculas.Columns["Categoria"].Visible = false;
+                dgvPeliculas.Columns["Duracion"].Visible = false;
+                dgvPeliculas.Columns["EstaDisponible"].Visible = false;
+                dgvPeliculas.BorderStyle = BorderStyle.None;
+                dgvPeliculas.CellBorderStyle = DataGridViewCellBorderStyle.None;
+                dgvPeliculas.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+                
+                
+               
 
+            }
         }
+
 
         private void btnReturn_Click_1(object sender, EventArgs e)
         {
@@ -35,21 +51,25 @@ namespace Videoclub_Frontend.Views
             this.Hide();
         }
 
-        private void btnTitanic_Click(object sender, EventArgs e)
+
+        private void dgvPeliculas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var pelicula = _context.Peliculas.FirstOrDefault(p => p.Nombre == "Titanic");
+            dgvPeliculas.ReadOnly = true;
 
-            if (pelicula == null)
+            if (e.RowIndex < 0)
             {
-                MessageBox.Show("La pelicula ya no esta en nuestro catalogo");
+                return;
             }
-            else if (pelicula != null)
-            {
-                Form3 form3 = new Form3();
-                form3.Show();
-                this.Hide();
+           
 
-            }
+            var peliculas = (Pelicula)dgvPeliculas
+                       .Rows[e.RowIndex]
+                       .DataBoundItem;
+
+            Form4 form4 = new Form4(peliculas);
+            form4.Show();
+            this.Hide();
+
         }
     }
 }

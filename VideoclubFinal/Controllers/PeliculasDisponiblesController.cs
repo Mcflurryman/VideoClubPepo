@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Videoclub.Shared.Data;
+using VideoclubFinal.data;
 using VideoclubFinal.Models;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 using VideoclubFinal.Models;
 using VideoclubFinal.Services;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using Videoclub.Shared.Data;
-using Videoclub.Shared.Models;
+
+using VideoclubFinal.data;
+
 
 namespace PeliculasAPI.Controllers
 {
@@ -24,7 +24,7 @@ namespace PeliculasAPI.Controllers
         public async Task<IActionResult> GetAlquiler()
         {
 
-            return Ok(_context.AlquilerPeliculas);
+            return Ok( _context.AlquilerPeliculas);
         }
 
 
@@ -202,7 +202,7 @@ namespace PeliculasAPI.Controllers
 
         }
 
-                [HttpPost("añadir")]
+        [HttpPost("añadir")]
         public async Task<IActionResult> PostAlquiler([FromBody] AlquilerPelicula nuevoAlquiler)
         {
             try

@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             btnReturn = new Button();
-            btnTitanic = new Button();
+            dgvPeliculas = new DataGridView();
+            kabel2 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvPeliculas).BeginInit();
             SuspendLayout();
             // 
             // btnReturn
             // 
-            btnReturn.Location = new Point(71, 24);
+            btnReturn.Location = new Point(228, 406);
             btnReturn.Name = "btnReturn";
             btnReturn.Size = new Size(75, 23);
             btnReturn.TabIndex = 0;
@@ -42,27 +44,38 @@
             btnReturn.UseVisualStyleBackColor = true;
             btnReturn.Click += btnReturn_Click_1;
             // 
-            // btnTitanic
+            // dgvPeliculas
             // 
-            btnTitanic.Location = new Point(60, 91);
-            btnTitanic.Name = "btnTitanic";
-            btnTitanic.Size = new Size(86, 90);
-            btnTitanic.TabIndex = 1;
-            btnTitanic.Text = "Titanic";
-            btnTitanic.UseVisualStyleBackColor = true;
-            btnTitanic.Click += btnTitanic_Click;
+            dgvPeliculas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPeliculas.Location = new Point(90, 62);
+            dgvPeliculas.Name = "dgvPeliculas";
+            dgvPeliculas.Size = new Size(116, 280);
+            dgvPeliculas.TabIndex = 1;
+            dgvPeliculas.CellClick += dgvPeliculas_CellClick;
+            // 
+            // kabel2
+            // 
+            kabel2.AutoSize = true;
+            kabel2.Location = new Point(122, 24);
+            kabel2.Name = "kabel2";
+            kabel2.Size = new Size(53, 15);
+            kabel2.TabIndex = 2;
+            kabel2.Text = "Peliculas";
             // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnTitanic);
+            ClientSize = new Size(324, 450);
+            Controls.Add(kabel2);
+            Controls.Add(dgvPeliculas);
             Controls.Add(btnReturn);
             Name = "Form2";
             Text = "Form2";
             Load += Form2_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPeliculas).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -70,6 +83,7 @@
         private Button btnreturn;
         private DataGridView dgvPeliculasDisponibles;
         private Button btnReturn;
-        private Button btnTitanic;
+        private DataGridView dgvPeliculas;
+        private Label kabel2;
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using VideoclubFinal.Models;
 using VideoclubFinal.Services;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-using Videoclub.Shared.Data;
+using VideoclubFinal.data;
 
 namespace PeliculasAPI.Controllers
 {

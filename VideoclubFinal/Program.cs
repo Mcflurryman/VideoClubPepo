@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Videoclub.Shared.Data;
+using VideoclubFinal.data;
 using VideoclubFinal.Services;
 
 var builder = WebApplication.CreateBuilder(args);

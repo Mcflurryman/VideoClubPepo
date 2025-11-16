@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using PeliculasAPI.Controllers;
 using System.Reflection.Metadata.Ecma335;
-using Videoclub.Shared.Data;
+using VideoclubFinal.data;
 using VideoclubFinal.Models;
 
 namespace VideoclubFinal.Services
