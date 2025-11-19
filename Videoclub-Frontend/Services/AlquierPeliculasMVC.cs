@@ -41,7 +41,7 @@ namespace Videoclub.Frontend.Services
             }
             else
             {
-                return "Error: " {cuerpo};
+                return "Error: " + cuerpo;
             }
         }
     }
