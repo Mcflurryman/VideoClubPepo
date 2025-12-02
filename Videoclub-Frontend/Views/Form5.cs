@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Videoclub.Frontend.Models;
 using Videoclub.Frontend.Services;
+using VideoClub.Backend.Models;
 
 namespace Videoclub.Frontend.Views
 {

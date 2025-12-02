@@ -190,18 +190,22 @@ namespace PeliculasAPI.Controllers
         {
             try
             {
-                var borrar = await _context.Peliculas.FirstOrDefaultAsync(e => e.Id == id);
+                var pelicula = await _context.Peliculas.FirstOrDefaultAsync(e => e.Id == id);
 
-                if (borrar == null)
+                if (pelicula == null)
                 {
-                    return NotFound("La pelicula no existe");
+                    return NotFound("La película no existe");
                 }
+
+                _context.Peliculas.Remove(pelicula);
+
                 await _context.SaveChangesAsync();
-                return Ok("Se ha borrado la pelicula con el id " + id + " correctamente");
+
+                return Ok($"Se ha borrado la película con el id {id} correctamente");
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Error interno del servidor ");
+                return StatusCode(500, "Error interno del servidor: " + ex.Message);
             }
         }
         [HttpPatch("editarDisponibilidad/{id}")]

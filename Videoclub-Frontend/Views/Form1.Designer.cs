@@ -29,8 +29,14 @@
         private void InitializeComponent()
         {
             peliculasDisp = new Button();
-            peliculasTotales = new Button();
+            btnAlquileres = new Button();
             Titulo = new Label();
+            btnEntrar = new Button();
+            txtbNombreCliente = new TextBox();
+            label1 = new Label();
+            btnRestringido = new Button();
+            txtbContraseña = new TextBox();
+            btnEntrarZona = new Button();
             SuspendLayout();
             // 
             // peliculasDisp
@@ -43,14 +49,15 @@
             peliculasDisp.UseVisualStyleBackColor = true;
             peliculasDisp.Click += peliculasDisp_Click;
             // 
-            // peliculasTotales
+            // btnAlquileres
             // 
-            peliculasTotales.Location = new Point(505, 182);
-            peliculasTotales.Name = "peliculasTotales";
-            peliculasTotales.Size = new Size(162, 63);
-            peliculasTotales.TabIndex = 1;
-            peliculasTotales.Text = "Peliculas en el catalogo";
-            peliculasTotales.UseVisualStyleBackColor = true;
+            btnAlquileres.Location = new Point(505, 182);
+            btnAlquileres.Name = "btnAlquileres";
+            btnAlquileres.Size = new Size(162, 63);
+            btnAlquileres.TabIndex = 1;
+            btnAlquileres.Text = "Mis Alquileres";
+            btnAlquileres.UseVisualStyleBackColor = true;
+            btnAlquileres.Click += peliculasTotales_Click;
             // 
             // Titulo
             // 
@@ -61,13 +68,79 @@
             Titulo.TabIndex = 2;
             Titulo.Text = "¡Bienvenido!";
             // 
+            // btnEntrar
+            // 
+            btnEntrar.Location = new Point(551, 342);
+            btnEntrar.Name = "btnEntrar";
+            btnEntrar.Size = new Size(75, 23);
+            btnEntrar.TabIndex = 3;
+            btnEntrar.Text = "Entrar";
+            btnEntrar.UseVisualStyleBackColor = true;
+            btnEntrar.Visible = false;
+            btnEntrar.Click += btnEntrar_Click;
+            // 
+            // txtbNombreCliente
+            // 
+            txtbNombreCliente.Location = new Point(530, 295);
+            txtbNombreCliente.Name = "txtbNombreCliente";
+            txtbNombreCliente.Size = new Size(120, 23);
+            txtbNombreCliente.TabIndex = 4;
+            txtbNombreCliente.Visible = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(514, 263);
+            label1.Name = "label1";
+            label1.Size = new Size(153, 15);
+            label1.TabIndex = 5;
+            label1.Text = "Inserte su nombre por favor";
+            label1.Visible = false;
+            // 
+            // btnRestringido
+            // 
+            btnRestringido.Location = new Point(635, 28);
+            btnRestringido.Name = "btnRestringido";
+            btnRestringido.Size = new Size(94, 41);
+            btnRestringido.TabIndex = 6;
+            btnRestringido.Text = "Zona Restringida";
+            btnRestringido.UseVisualStyleBackColor = true;
+            btnRestringido.Click += btnRestringido_Click;
+            // 
+            // txtbContraseña
+            // 
+            txtbContraseña.Location = new Point(635, 75);
+            txtbContraseña.Name = "txtbContraseña";
+            txtbContraseña.Size = new Size(94, 23);
+            txtbContraseña.TabIndex = 7;
+            txtbContraseña.UseSystemPasswordChar = true;
+            txtbContraseña.Visible = false;
+            txtbContraseña.TextChanged += txtbContraseña_TextChanged;
+            // 
+            // btnEntrarZona
+            // 
+            btnEntrarZona.Location = new Point(644, 104);
+            btnEntrarZona.Name = "btnEntrarZona";
+            btnEntrarZona.Size = new Size(75, 23);
+            btnEntrarZona.TabIndex = 8;
+            btnEntrarZona.Text = "Entrar";
+            btnEntrarZona.UseVisualStyleBackColor = true;
+            btnEntrarZona.Visible = false;
+            btnEntrarZona.Click += btnEntrarZona_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnEntrarZona);
+            Controls.Add(txtbContraseña);
+            Controls.Add(btnRestringido);
+            Controls.Add(label1);
+            Controls.Add(txtbNombreCliente);
+            Controls.Add(btnEntrar);
             Controls.Add(Titulo);
-            Controls.Add(peliculasTotales);
+            Controls.Add(btnAlquileres);
             Controls.Add(peliculasDisp);
             Name = "Form1";
             Text = "Form1";
@@ -79,7 +152,13 @@
         #endregion
 
         private Button peliculasDisp;
-        private Button peliculasTotales;
+        private Button btnAlquileres;
         private Label Titulo;
+        private Button btnEntrar;
+        private TextBox txtbNombreCliente;
+        private Label label1;
+        private Button btnRestringido;
+        private TextBox txtbContraseña;
+        private Button btnEntrarZona;
     }
 }

@@ -29,7 +29,22 @@ namespace Videoclub.Frontend.Services
             return await _http.GetFromJsonAsync<List<AlquilerPelicula>>("api/Alquiler");
         }
 
-        public async Task<string>PostAlquiler(AlquilerPelicula nuevoAlquiler)
+        public async Task<string> devolverPelicula(int id, AlquilerPelicula devolucion)
+        {
+            HttpResponseMessage response = await _http.PatchAsJsonAsync("api/Alquiler/devolucion/" + id, devolucion);
+
+            string cuerpo = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return cuerpo;
+            }
+            else
+            {
+                return "Error: " + cuerpo;
+            }
+        }
+        public async Task<string> PostAlquiler(AlquilerPelicula nuevoAlquiler)
         {
             HttpResponseMessage response = await _http.PostAsJsonAsync("api/Alquiler/añadir", nuevoAlquiler);
 
@@ -43,6 +58,15 @@ namespace Videoclub.Frontend.Services
             {
                 return "Error: " + cuerpo;
             }
+        }
+        public async Task<List<AlquilerPelicula>>GetAlquilerPorNombre(string nombre)
+        {
+            return await _http.GetFromJsonAsync<List<AlquilerPelicula>>("api/Alquiler/"+ nombre);
+        }
+        public async Task<string> DeleteAlq(int id)
+        {
+           var response = await _http.DeleteAsync("api/Alquiler/borrar/" + id);
+              return await response.Content.ReadAsStringAsync();
         }
     }
 }

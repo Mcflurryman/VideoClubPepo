@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+using VideoClub.Backend.Models;
+using VideoclubFinal.data;
 using VideoclubFinal.Models;
 using VideoclubFinal.Services;
-
-using VideoclubFinal.data;
 
 
 namespace PeliculasAPI.Controllers
@@ -25,6 +24,28 @@ namespace PeliculasAPI.Controllers
         {
 
             return Ok( _context.AlquilerPeliculas);
+        }
+     
+        [HttpGet("nombre/{nombre}")]
+        public async Task<IActionResult> GetAlquilerPorNombre(string nombre)
+        {
+            var alquileres = await _context.AlquilerPeliculas
+                .Where(a => a.NombreCliente == nombre)
+                .ToListAsync();
+
+            var resultado = alquileres.Select(p => new VistaClienteAlquiler
+            {
+                NombreCliente = p.NombreCliente,
+                IdPelicula = p.IdPelicula,
+                FechaAlquiler = p.FechaAlquiler,
+                FechaDevolucion = p.FechaDevolucion,
+                NombrePelicula = _context.Peliculas
+                     .Where(o => o.Id == p.IdPelicula)
+                     .Select(g => g.Nombre)
+                     .FirstOrDefault()
+            }).ToList();
+
+            return Ok(resultado);
         }
 
 
@@ -308,6 +329,25 @@ namespace PeliculasAPI.Controllers
                 return StatusCode(500, "Error interno del servidor ");
             }
 
+        }
+        [HttpDelete("borrar/{id}")]
+        public async Task<IActionResult> DeleteAlq(int id)
+        {
+            try
+            {
+                var borrar = await _context.AlquilerPeliculas.FirstOrDefaultAsync(e => e.Id == id);
+
+                if (borrar == null)
+                {
+                    return NotFound("El alquiler no existe");
+                }
+                await _context.SaveChangesAsync();
+                return Ok("Se ha el alquiler con el id " + id + " correctamente");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error interno del servidor ");
+            }
         }
     }
 }
