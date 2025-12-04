@@ -1,6 +1,8 @@
+-- Crear la base de datos
 CREATE DATABASE PeliculasDB;
 GO
 
+-- Usar la base recién creada
 USE PeliculasDB;
 GO
 
@@ -30,7 +32,7 @@ CREATE TABLE AlquilerPeliculas (
     FOREIGN KEY (IdPelicula) REFERENCES Peliculas(Id)
 );
 
--- 1º INSERTAR PELICULAS
+-- INSERTAR PELICULAS
 INSERT INTO Peliculas (Id, Nombre, Categoria, Duracion, estaDisponible) VALUES
 (1, 'Inception', 'Ciencia ficción', 149, 1),
 (2, 'Titanic', 'Romance', 195, 1),
@@ -54,7 +56,7 @@ INSERT INTO Peliculas (Id, Nombre, Categoria, Duracion, estaDisponible) VALUES
 (20, 'El Pikachu 2', 'Ficcion', 178, 1),
 (21, 'El Pikachu 3', 'Ficcion', 178, 1);
 
--- 2º INSERTAR PELICULAS DISPONIBLES
+-- INSERTAR PELICULAS DISPONIBLES
 INSERT INTO PeliculasDisponibles (IdPelicula, Cantidad) VALUES
 (1, 2),
 (2, 5),
@@ -66,7 +68,7 @@ INSERT INTO PeliculasDisponibles (IdPelicula, Cantidad) VALUES
 (8, 5),
 (9, 1);
 
--- 3º INSERTAR ALQUILERES
+-- INSERTAR ALQUILERES
 INSERT INTO AlquilerPeliculas (Id, IdPelicula, nombreCliente, FechaAlquiler, FechaDevolucion) VALUES
 (1, 1, 'Carlos López', '2025-01-12', NULL),
 (2, 3, 'Ana Torres', '2025-02-05', NULL),
@@ -87,3 +89,10 @@ INSERT INTO AlquilerPeliculas (Id, IdPelicula, nombreCliente, FechaAlquiler, Fec
 (18, 3, 'aida', '2025-11-20', NULL),
 (19, 3, 'aida', '2025-11-25', NULL),
 (20, 5, 'jonatan', '2025-11-26', '2025-11-26');
+
+
+USE master;
+GO
+
+ALTER AUTHORIZATION ON DATABASE::PeliculasDB TO [BUILTIN\Users];
+GO
